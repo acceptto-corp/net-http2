@@ -33,7 +33,7 @@ module NetHttp2
       socket = ::Socket.new(family, ::Socket::SOCK_STREAM, 0)
       socket.setsockopt(::Socket::IPPROTO_TCP, ::Socket::TCP_NODELAY, 1)
       socket.setsockopt(::Socket::SOL_SOCKET, ::Socket::SO_KEEPALIVE, true)
-      if Socket.const_defined?(:SOL_TCP)
+      if Socket.const_defined?(:SOL_TCP) && Socket.const_defined?(:TCP_KEEPIDLE)
         socket.setsockopt(::Socket::SOL_TCP, ::Socket::TCP_KEEPIDLE, 340)
       end
 
